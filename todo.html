@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+<body>
+    <h1>TODO LIST</h1>
+    <div>
+    <input type="text">
+    <button onclick="functionality()"> Add Item</button>
+    </div>
+</body>
+<script>
+    let i=1;
+   function deleteButn(id){
+   const ele = document.getElementById(id);
+   ele.parentNode.removeChild(ele);
+   }
+    function functionality(){
+        //reading data
+        const fetchData = document.querySelector("input");
+        const value = fetchData.value;
+
+        //creating and adding data into new element
+        const newDiv=document.createElement("div");
+        let newEle = document.createElement("h3");
+        newEle.innerText = value;
+        var butn=document.createElement("button");
+        butn.innerText="Delete";
+
+        //appending element to parent node
+        document.body.appendChild(newDiv);
+        newDiv.appendChild(newEle);
+        newDiv.appendChild(butn);
+
+        newDiv.style.display="flex";
+        butn.style.marginLeft="10px";
+        butn.style.marginTop="22px";
+        butn.style.height="22px";
+
+        newDiv.id=i;
+        butn.setAttribute("onclick","deleteButn("+ i +")");
+        i++;
+    }
+</script>
+</html>
